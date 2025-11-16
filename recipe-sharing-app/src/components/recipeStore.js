@@ -61,6 +61,20 @@ export const useRecipeStore = create((set, get) => ({
       favorites: state.favorites.filter((id) => id !== recipeId),
     })),
 
+  // RECOMMENDATIONS
+  recommendations: [],
+
+  generateRecommendations: () =>
+    set((state) => {
+      // Mock: recommend favorited recipes randomly
+      const recommended = state.recipes.filter(
+        (recipe) =>
+          state.favorites.includes(recipe.id) && Math.random() > 0.5
+      );
+
+      return { recommendations: recommended };
+    }),
+
   // ============================
   // 🔹 RECOMMENDATIONS
   // ============================
