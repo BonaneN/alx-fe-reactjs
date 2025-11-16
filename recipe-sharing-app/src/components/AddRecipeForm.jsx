@@ -31,3 +31,5 @@
       </form>
     );
   };
+
+  export default AddRecipeForm;

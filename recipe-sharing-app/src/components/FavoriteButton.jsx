@@ -1,4 +1,5 @@
-import useRecipeStore from "../recipeStore";
+import { useRecipeStore } from './recipeStore.js';
+
 
 const FavoriteButton = ({ recipeId }) => {
   const favorites = useRecipeStore((state) => state.favorites);

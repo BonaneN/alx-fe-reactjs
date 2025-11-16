@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import RecipeList from "./components/RecipeList";
-import AddRecipeForm from "./components/AddRecipeForm";
-import RecipeDetails from "./components/RecipeDetails";
-import SearchBar from "./components/SearchBar";
-import FavoritesList from "./components/FavoritesList";
-import RecommendationsList from "./components/RecommendationsList";
+import RecipeList from "./components/RecipeList.jsx";
+import AddRecipeForm from "./components/AddRecipeForm.jsx";
+import RecipeDetails from "./components/RecipeDetails.jsx";
+import SearchBar from "./components/SearchBar.jsx";
+import FavoritesList from "./components/FavoritesList.jsx";
+import RecommendationsList from "./components/RecommendationsList.jsx";
 
 const App = () => {
   return (
-    <Router>  {/* <-- REQUIRED: Contains "Router" */}
+    <Router>
       <Routes>
         <Route
           path="/"
@@ -26,7 +26,6 @@ const App = () => {
             </>
           }
         />
-
         <Route path="/recipe/:id" element={<RecipeDetails />} />
       </Routes>
     </Router>
