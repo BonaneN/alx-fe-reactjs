@@ -31,7 +31,7 @@ export const useRecipeStore = create((set, get) => ({
   // ============================
   // 🔹 SEARCH + FILTERING
   // ============================
-  searchTerm: '',
+  searchTerm: "",
   filteredRecipes: [],
 
   setSearchTerm: (term) =>
@@ -78,3 +78,4 @@ export const useRecipeStore = create((set, get) => ({
       return { recommendations: recommended };
     }),
 }));
+
