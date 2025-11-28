@@ -1,12 +1,13 @@
 @import "tailwindcss/preflight";
 @tailwind utilities;
 
-/* Optional: add custom components */
+/* Optional custom components */
 @layer components {
   .btn {
     @apply px-4 py-2 bg-blue-500 text-white rounded;
   }
 }
+
 
 /* Optional custom styles */
 

@@ -1,8 +1,9 @@
-import UserProfile from "./components/UserProfile";
+import UserProfile from './components/UserProfile';
+import './index.css';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <UserProfile />
     </div>
   );
