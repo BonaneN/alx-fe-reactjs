@@ -1,37 +1,19 @@
 import axios from "axios";
 
-export async function fetchUserData(username) {
-  const url = `https://api.github.com/users/${username}`;
+const BASE_URL = "https://api.github.com";
 
-  const response = await axios.get(url, {
-    headers: {
-      Authorization: import.meta.env.VITE_APP_GITHUB_API_KEY
-        ? `Bearer ${import.meta.env.VITE_APP_GITHUB_API_KEY}`
-        : undefined,
-    },
+export const fetchUserData = async (username) => {
+  if (!username) throw new Error("Username required");
+
+  const token = import.meta.env.VITE_APP_GITHUB_API_KEY;
+
+  const headers = token
+    ? { Authorization: `token ${token}` }
+    : {};
+
+  const response = await axios.get(`${BASE_URL}/users/${username}`, {
+    headers,
   });
 
   return response.data;
-}
-
-export async function advancedSearch(queryObj) {
-  const { username, location, minRepos } = queryObj;
-
-  let query = "";
-
-  if (username) query += `${username} in:login `;
-  if (location) query += `location:${location} `;
-  if (minRepos) query += `repos:>${minRepos}`;
-
-  const url = `https://api.github.com/search/users?q=${query}`;
-
-  const response = await axios.get(url, {
-    headers: {
-      Authorization: import.meta.env.VITE_APP_GITHUB_API_KEY
-        ? `Bearer ${import.meta.env.VITE_APP_GITHUB_API_KEY}`
-        : undefined,
-    },
-  });
-
-  return response.data.items;
-}
+};
