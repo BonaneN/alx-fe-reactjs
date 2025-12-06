@@ -41,8 +41,7 @@ export default function AddRecipeForm() {
     <div className="max-w-xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-4 text-center">Add New Recipe</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-
+      <form onSubmit={handleSubmit} className="space-y-4 shadow-md bg-white rounded-lg p-6">
         <div>
           <input
             type="text"
