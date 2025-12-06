@@ -1,9 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    ".public/index.html",          // <-- include the main HTML file
-    "./src/**/*.{js,jsx,ts,tsx}" // <-- include all React components
-  ],
+ module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  darkMode: false, // You can set it to 'media' or 'class' if needed
   theme: {
     extend: {},
   },
