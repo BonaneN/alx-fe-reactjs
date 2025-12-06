@@ -4,7 +4,7 @@ export default function AddRecipeForm() {
   const [formData, setFormData] = useState({
     title: "",
     ingredients: "",
-    instructions: ""
+    steps: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -15,13 +15,13 @@ export default function AddRecipeForm() {
 
     if (!formData.title.trim()) newErrors.title = "Title is required.";
     if (!formData.ingredients.trim()) newErrors.ingredients = "Ingredients are required.";
-    if (!formData.instructions.trim()) newErrors.instructions = "Instructions are required.";
+    if (!formData.steps.trim()) newErrors.steps = "Preparation steps are required.";
 
     return newErrors;
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; // <-- using e.target.value
     setFormData({ ...formData, [name]: value });
   };
 
@@ -33,15 +33,16 @@ export default function AddRecipeForm() {
 
     if (Object.keys(validationErrors).length === 0) {
       alert("Recipe submitted successfully!");
-      setFormData({ title: "", ingredients: "", instructions: "" });
+      setFormData({ title: "", ingredients: "", steps: "" });
     }
   };
 
   return (
     <div className="max-w-xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">Add New Recipe</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center">Add New Recipe</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+
         <div>
           <input
             type="text"
@@ -61,21 +62,21 @@ export default function AddRecipeForm() {
             className="w-full p-3 border rounded-md"
             rows="4"
             value={formData.ingredients}
-            onChange={handleChange}
+            onChange={handleChange} // <-- using e.target.value
           />
           {errors.ingredients && <p className="text-red-500 mt-1">{errors.ingredients}</p>}
         </div>
 
         <div>
           <textarea
-            name="instructions"
+            name="steps"  // <-- renamed from "instructions"
             placeholder="Preparation Steps"
             className="w-full p-3 border rounded-md"
             rows="6"
-            value={formData.instructions}
-            onChange={handleChange}
+            value={formData.steps}
+            onChange={handleChange} // <-- using e.target.value
           />
-          {errors.instructions && <p className="text-red-500 mt-1">{errors.instructions}</p>}
+          {errors.steps && <p className="text-red-500 mt-1">{errors.steps}</p>}
         </div>
 
         <button className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700">
