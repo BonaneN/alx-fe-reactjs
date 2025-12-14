@@ -2,6 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 
 const fetchPosts = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  if (!response.ok) {
+    throw new Error("Error fetching posts");
+  }
   return response.json();
 };
 
@@ -9,7 +12,7 @@ const PostsComponent = () => {
   const {
     data,
     isLoading,
-    error,
+    isError,
     refetch,
   } = useQuery({
     queryKey: ["posts"],
@@ -17,13 +20,12 @@ const PostsComponent = () => {
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching posts</p>;
+  if (isError) return <p>Error loading posts</p>;
 
   return (
     <div>
       <h2>Posts</h2>
 
-      {/* Refetch interaction */}
       <button onClick={refetch}>Refetch Posts</button>
 
       <ul>
