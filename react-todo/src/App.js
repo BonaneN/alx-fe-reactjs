@@ -1,14 +1,13 @@
-// src/App.jsx
-import React from 'react';
+// src/App.js
 import TodoList from './components/TodoList';
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1>Todo App</h1>
+    <div className="App">
+      <h1>My Todo App</h1>
       <TodoList />
     </div>
   );
-};
+}
 
 export default App;

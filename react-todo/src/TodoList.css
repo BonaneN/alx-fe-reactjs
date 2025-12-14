@@ -1,0 +1,96 @@
+/* src/TodoList.css */
+
+/* General styles for the Todo List container */
+.todo-list {
+    max-width: 400px;
+    margin: 50px auto; /* Center the component horizontally */
+    padding: 20px;
+    background-color: #fff0bd; /* Light background color */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Heading style */
+  .todo-list h1 {
+    color: #4f2f20; /* Dark brown color */
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+  
+  /* Form styling */
+  .todo-list form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .todo-list input {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #4f2f20; /* Border color matching the heading */
+    border-radius: 5px;
+  }
+  
+  .todo-list button {
+    padding: 10px 20px;
+    background-color: #c0232a; /* Red color for the button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .todo-list button:hover {
+    background-color: #f0f0f0; /* Darker color on hover */
+  }
+  
+  /* List and List Item styling */
+  .todo-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .todo-list li {
+    padding: 10px;
+    background-color: white;
+    margin: 5px 0;
+    border: 1px solid #c0232a; /* Border color for list items */
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .todo-list li:hover {
+    background-color: #fff0bd; /* Light background on hover */
+  }
+  
+  .todo-list li.completed {
+    text-decoration: line-through;
+    color: grey;
+    background-color: #007f28; /* Completed tasks background */
+    color: rgb(32, 32, 32); /* Completed tasks text color */
+  }
+  
+  .todo-list li button {
+    background-color: #c0232a; /* Red color for delete button */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .todo-list li button:hover {
+    background-color: #4f2f20; /* Darker color on hover */
+  }
+  

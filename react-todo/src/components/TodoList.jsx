@@ -1,39 +1,50 @@
-import React, { useState } from "react";
-import AddTodoForm from "./AddTodoForm";
+// src/components/TodoList.jsx
+import { useState } from 'react';
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([{ text: "Learn React", completed: false }]);
+  const [todos, setTodos] = useState([
+    { id: 1, text: 'Learn React', completed: false },
+    { id: 2, text: 'Build a Todo App', completed: false },
+  ]);
+
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
   const addTodo = (text) => {
-    setTodos([...todos, { text, completed: false }]);
-  };
-
-  const toggleTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos[index].completed = !newTodos[index].completed;
-    setTodos(newTodos);
-  };
-
-  const deleteTodo = (index) => {
-    const newTodos = todos.filter((_, i) => i !== index);
-    setTodos(newTodos);
+    const newTodo = {
+      id: todos.length + 1,
+      text,
+      completed: false,
+    };
+    setTodos([...todos, newTodo]);
   };
 
   return (
     <div>
       <h2>Todo List</h2>
-      <AddTodoForm addTodo={addTodo} />
       <ul>
-        {todos.map((todo, index) => (
+        {todos.map((todo) => (
           <li
-            key={index}
-            onClick={() => toggleTodo(index)}
-            style={{ textDecoration: todo.completed ? "line-through" : "none" }}
+            key={todo.id}
+            style={{
+              textDecoration: todo.completed ? 'line-through' : 'none',
+            }}
           >
-            {todo.text} <button onClick={() => deleteTodo(index)}>Delete</button>
+            <span onClick={() => toggleTodo(todo.id)}>{todo.text}</span>
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           </li>
         ))}
       </ul>
+      <AddTodoForm addTodo={addTodo} />
     </div>
   );
 };
