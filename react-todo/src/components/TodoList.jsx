@@ -40,7 +40,14 @@ const TodoList = () => {
             data-testid={`todo-item-${todo.id}`}
           >
             {todo.task}
-            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); // prevent toggle when deleting
+                deleteTodo(todo.id);
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
