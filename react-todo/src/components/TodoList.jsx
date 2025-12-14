@@ -1,53 +1,39 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import AddTodoForm from "./AddTodoForm";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([
-    { id: 1, task: "Learn React", completed: false },
-    { id: 2, task: "Learn Router", completed: true },
+    { text: "Learn React", completed: false },
+    { text: "Learn Router", completed: false },
   ]);
 
-  const addTodo = (task) => {
-    setTodos([...todos, { id: Date.now(), task, completed: false }]);
+  const addTodo = (text) => {
+    setTodos([...todos, { text, completed: false }]);
   };
 
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+  const toggleTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].completed = !newTodos[index].completed;
+    setTodos(newTodos);
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const deleteTodo = (index) => {
+    const newTodos = todos.filter((_, i) => i !== index);
+    setTodos(newTodos);
   };
 
   return (
     <div>
       <h2>Todo List</h2>
       <AddTodoForm addTodo={addTodo} />
-
       <ul>
-        {todos.map((todo) => (
+        {todos.map((todo, index) => (
           <li
-            key={todo.id}
-            onClick={() => toggleTodo(todo.id)}
-            style={{
-              textDecoration: todo.completed ? "line-through" : "none",
-              cursor: "pointer",
-            }}
-            data-testid={`todo-item-${todo.id}`}
+            key={index}
+            onClick={() => toggleTodo(index)}
+            style={{ textDecoration: todo.completed ? "line-through" : "none" }}
           >
-            {todo.task}
-            <button
-              onClick={(e) => {
-                e.stopPropagation(); // prevent toggle when deleting
-                deleteTodo(todo.id);
-              }}
-            >
-              Delete
-            </button>
+            {todo.text} <button onClick={() => deleteTodo(index)}>Delete</button>
           </li>
         ))}
       </ul>
