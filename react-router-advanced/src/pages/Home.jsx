@@ -1,0 +1,13 @@
+import { Link } from "react-router-dom";
+
+const Home = () => {
+  return (
+    <div>
+      <h2>Home</h2>
+      <Link to="/profile">Profile</Link><br />
+      <Link to="/blog/1">Blog Post 1</Link>
+    </div>
+  );
+};
+
+export default Home;
