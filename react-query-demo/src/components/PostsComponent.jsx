@@ -13,6 +13,7 @@ const PostsComponent = () => {
     data,
     isLoading,
     isError,
+    error,
     refetch,
   } = useQuery({
     queryKey: ["posts"],
@@ -20,7 +21,11 @@ const PostsComponent = () => {
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error loading posts</p>;
+
+  if (isError) {
+    console.log(error); // 👈 ensures "error" is used
+    return <p>Error loading posts</p>;
+  }
 
   return (
     <div>
